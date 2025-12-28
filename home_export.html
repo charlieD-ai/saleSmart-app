@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaleSmart Home - Full Content Export</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        /* Adjusted frame to be full height (no scrolling) for Figma import */
+        .iphone-frame {
+            width: 375px;
+            background: #f8fafc;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 40px;
+            overflow: hidden; /* Prevent internal scroll, let it grow */
+            border: 8px solid #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="iphone-frame">
+        <!-- Status Bar Spacer (Simulated) -->
+        <div class="h-11 w-full bg-white/80 shrink-0"></div>
+
+        <!-- Header -->
+        <header class="bg-white/80 backdrop-blur-md px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md border-2 border-white text-xs">
+                    董
+                </div>
+                <div class="text-left">
+                    <h1 class="text-sm font-semibold text-slate-900 leading-none mb-1">嗨，董陈晨 👋</h1>
+                    <p class="text-[10px] text-slate-500">SaleSmart 销售智能助手</p>
+                </div>
+            </div>
+            <div class="p-2.5 rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+            </div>
+        </header>
+
+        <!-- Main Content (Grows to full content height) -->
+        <main class="flex-1 p-4 space-y-6">
+            
+            <!-- Welcome Board -->
+            <section class="relative h-48 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/10">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#1a237e] via-[#283593] to-[#303f9f]">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-400/20 rounded-full blur-[80px] -mr-20 -mt-20"></div>
+                </div>
+                <div class="relative z-10 h-full p-8 flex flex-col justify-between">
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                            <span class="text-white/40 text-[10px] font-black tracking-[0.3em] uppercase">Thursday • Dec 24</span>
+                        </div>
+                        <h2 class="text-2xl font-black text-white tracking-tight">早安，董陈晨 <span class="text-blue-400">.</span></h2>
+                    </div>
+                    <div class="relative pl-4 border-l-2 border-blue-500/30">
+                        <p class="text-[14px] text-blue-50/80 font-medium leading-relaxed tracking-tight italic">
+                            “成功的销售不在于推销产品，而在于为客户解决问题。”
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule -->
+            <section class="space-y-3">
+                <div class="flex items-center justify-between px-1">
+                    <h2 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                        今日日程
+                        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    </h2>
+                    <span class="text-[10px] text-slate-400 font-bold">全部日程 ></span>
+                </div>
+                
+                <div class="bg-white p-6 rounded-[2.2rem] border border-slate-100 shadow-sm relative overflow-hidden">
+                    <div class="flex gap-6 items-stretch">
+                        <div class="flex flex-col items-center shrink-0 w-12 py-1">
+                            <span class="text-sm font-black text-slate-900 leading-none">14:00</span>
+                            <div class="w-0.5 flex-1 bg-blue-100 my-2 rounded-full min-h-[44px]"></div>
+                            <span class="text-xs font-bold text-slate-400 leading-none">15:00</span>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between py-0.5">
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-900 leading-tight">云学堂演示平台 - 需求调研</h3>
+                                <div class="text-slate-400 text-[10px] font-bold mt-2 flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-blue-500/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    绚星智慧科技有限公司
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 mt-5">
+                                <button class="flex-1 bg-blue-600 text-white py-2.5 rounded-xl text-xs font-bold shadow-md shadow-blue-100">开始沟通</button>
+                                <button class="p-2.5 bg-slate-50 text-slate-400 rounded-xl">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- To-Dos -->
+            <section class="space-y-3">
+                <div class="flex items-center justify-between px-1">
+                    <h2 class="text-sm font-bold text-slate-800">今日待办</h2>
+                    <span class="text-[10px] text-slate-400 font-bold">全部待办 ></span>
+                </div>
+
+                <div class="bg-white rounded-[2.2rem] border border-slate-100 shadow-sm overflow-hidden divide-y divide-slate-50">
+                    <div class="bg-red-50/10">
+                        <div class="p-4 flex items-center gap-4">
+                            <div class="w-5 h-5 rounded-lg border-2 border-red-200"></div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2">
+                                    <h4 class="text-sm font-bold text-slate-900 truncate">发送合同给 张总</h4>
+                                    <span class="text-[7px] font-black px-1.5 py-0.5 bg-red-500 text-white rounded uppercase tracking-tighter shrink-0">逾期</span>
+                                </div>
+                                <p class="text-[10px] text-slate-400 font-medium truncate">数字化运营平台升级项目</p>
+                            </div>
+                            <div class="text-[10px] font-bold text-red-500 shrink-0">12-20</div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 flex items-center gap-4">
+                        <div class="w-5 h-5 rounded-lg border-2 border-slate-200"></div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-sm font-bold text-slate-900 truncate">预约演示时间</h4>
+                            <p class="text-[10px] text-slate-400 font-medium truncate">苏州智慧园区</p>
+                        </div>
+                        <div class="text-[10px] font-bold text-slate-400 shrink-0">今天 14:00</div>
+                    </div>
+                    
+                    <div class="p-4 flex items-center gap-4">
+                        <div class="w-5 h-5 rounded-lg border-2 border-slate-200"></div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-sm font-bold text-slate-900 truncate">确认二期方案回执</h4>
+                            <p class="text-[10px] text-slate-400 font-medium truncate">华东数字化转型研究中心</p>
+                        </div>
+                        <div class="text-[10px] font-bold text-slate-400 shrink-0">今天 16:30</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Intelligence Center -->
+            <section class="space-y-4 pb-6">
+                <div class="px-1 flex justify-between items-center">
+                    <h2 class="text-sm font-bold text-slate-800">情报中心</h2>
+                    <span class="text-[10px] text-slate-400 font-bold tracking-tight">近7日核心信号</span>
+                </div>
+                
+                <div class="bg-white rounded-[2.2rem] p-6 border border-slate-100 shadow-sm relative overflow-hidden">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-base font-black text-slate-900 truncate tracking-tight mb-2 leading-none">绚星智慧科技有限公司</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[9px] font-black border uppercase tracking-widest text-indigo-600 bg-indigo-50 border-indigo-100">
+                                        竞品威胁 · 已在对比友商
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2 bg-blue-50 text-blue-600 rounded-xl border border-blue-100/50">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50/70 rounded-2xl p-4 border border-slate-100/50">
+                            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+                                <span class="text-blue-600 font-bold mr-1 italic">AI 洞察:</span> 客户提及“另一家供应商已经给了报价”，态度偏中立。建议尽快同步我方差异化优势。
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-1">
+                            <div class="flex items-center gap-2">
+                                <div class="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-[8px]">来源</div>
+                                <span class="text-[10px] font-bold text-slate-400 tracking-tight">来源: <span class="text-slate-600">商务沟通环节</span></span>
+                            </div>
+                            <span class="text-blue-500 text-[10px] font-black uppercase tracking-tighter">查看详情 ></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-[2.2rem] p-6 border border-slate-100 shadow-sm relative overflow-hidden">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-base font-black text-slate-900 truncate tracking-tight mb-2 leading-none">苏州智慧园区</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[9px] font-black border uppercase tracking-widest text-amber-600 bg-amber-50 border-amber-100">
+                                        强购买意向 · 明确预算
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50/70 rounded-2xl p-4 border border-slate-100/50">
+                            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+                                <span class="text-blue-600 font-bold mr-1 italic">AI 洞察:</span> 客户确认“预算这周就能批下来”，并约定“周五一起过最终方案”。需锁定决策链条。
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-1">
+                            <div class="flex items-center gap-2">
+                                <div class="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-[8px]">来源</div>
+                                <span class="text-[10px] font-bold text-slate-400 tracking-tight">来源: <span class="text-slate-600">方案细节澄清会</span></span>
+                            </div>
+                            <span class="text-blue-500 text-[10px] font-black uppercase tracking-tighter">查看详情 ></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation Spacer -->
+        <div class="h-20 bg-white border-t border-slate-100 flex justify-around items-center shrink-0">
+            <div class="flex flex-col items-center gap-1 w-16 text-blue-600">
+                <div class="p-1.5 rounded-xl bg-blue-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                </div>
+                <span class="text-[10px] font-bold">首页</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 w-16 text-slate-400">
+                <div class="p-1.5 rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <span class="text-[10px] font-medium">沟通</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 w-16 text-slate-400">
+                <div class="p-1.5 rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <span class="text-[10px] font-medium">客户</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 w-16 text-slate-400">
+                <div class="p-1.5 rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                </div>
+                <span class="text-[10px] font-medium">Ask AI</span>
+            </div>
+        </div>
+
+        <!-- Home Indicator (Simulated) -->
+        <div class="h-6 bg-white flex items-center justify-center shrink-0">
+            <div class="w-32 h-1 bg-slate-900/10 rounded-full"></div>
+        </div>
+    </div>
+
+</body>
+</html>

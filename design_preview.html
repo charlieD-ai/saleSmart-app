@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaleSmart UI Export for Figma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; padding: 40px; }
+        .iphone-frame {
+            width: 375px;
+            height: 812px;
+            background: #fff;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 8px solid #1e293b;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            flex-shrink: 0;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="flex flex-wrap items-start justify-start">
+
+    <!-- 1. LOGIN SCREEN -->
+    <div class="iphone-frame">
+        <div class="h-full flex flex-col bg-white px-8 pb-12">
+            <div class="flex-1 flex flex-col items-center justify-center space-y-6">
+                <div class="w-20 h-20 bg-blue-600 rounded-[2rem] flex items-center justify-center shadow-2xl shadow-blue-200">
+                    <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                </div>
+                <div class="text-center space-y-2">
+                    <h1 class="text-3xl font-black text-slate-900 tracking-tight">让销售更有智慧</h1>
+                    <p class="text-slate-400 font-medium">AI 驱动的对话智能平台</p>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <button class="w-full py-4 bg-slate-900 text-white font-black rounded-2xl shadow-xl uppercase tracking-widest text-sm">开始使用</button>
+                <button class="w-full py-4 bg-white text-slate-900 font-black rounded-2xl border-2 border-slate-100 uppercase tracking-widest text-sm">登录</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. HOME DASHBOARD -->
+    <div class="iphone-frame bg-slate-50">
+        <header class="bg-white/80 backdrop-blur-md px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md border-2 border-white text-xs">董</div>
+                <div class="text-left">
+                    <h1 class="text-sm font-semibold text-slate-900 leading-none mb-1">嗨，董陈晨 👋</h1>
+                    <p class="text-[10px] text-slate-500">SaleSmart 销售智能助手</p>
+                </div>
+            </div>
+            <div class="p-2.5 rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-100"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg></div>
+        </header>
+        <div class="p-4 space-y-6 flex-1 overflow-y-auto hide-scrollbar">
+            <div class="relative h-44 rounded-[2.2rem] overflow-hidden shadow-2xl bg-gradient-to-br from-[#1a237e] to-[#303f9f] p-8 flex flex-col justify-between">
+                <div>
+                    <span class="text-white/40 text-[10px] font-black tracking-widest uppercase">Thursday • Dec 24</span>
+                    <h2 class="text-2xl font-black text-white tracking-tight mt-1">早安，董陈晨 .</h2>
+                </div>
+                <p class="text-[13px] text-blue-50/80 font-medium leading-relaxed italic line-clamp-2 border-l-2 border-blue-500/30 pl-3">“成功的销售不在于推销产品，而在于为客户解决问题。”</p>
+            </div>
+            <section class="space-y-3">
+                <div class="flex justify-between items-center px-1"><h2 class="text-sm font-bold text-slate-800">今日日程</h2><span class="text-[10px] text-slate-400">全部日程 ></span></div>
+                <div class="bg-white p-5 rounded-[2.2rem] border border-slate-100 shadow-sm flex gap-5">
+                    <div class="flex flex-col items-center shrink-0 w-10"><span class="text-sm font-black text-slate-900">14:00</span><div class="w-0.5 flex-1 bg-blue-100 my-2 rounded-full min-h-[30px]"></div><span class="text-xs font-bold text-slate-300">15:00</span></div>
+                    <div class="flex-1">
+                        <h3 class="text-sm font-bold text-slate-900 leading-tight">云学堂演示平台 - 需求调研</h3>
+                        <p class="text-[10px] text-slate-400 font-bold mt-1">绚星智慧科技有限公司</p>
+                        <div class="flex gap-2 mt-4"><button class="flex-1 bg-blue-600 text-white py-2 rounded-xl text-[10px] font-bold">开始沟通</button></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <nav class="bg-white border-t border-slate-100 px-4 py-4 flex justify-around">
+            <div class="flex flex-col items-center gap-1 text-blue-600"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span class="text-[10px] font-bold">首页</span></div>
+            <div class="flex flex-col items-center gap-1 text-slate-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="text-[10px] font-bold">沟通</span></div>
+            <div class="flex flex-col items-center gap-1 text-slate-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="text-[10px] font-bold">商机</span></div>
+            <div class="flex flex-col items-center gap-1 text-slate-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="text-[10px] font-bold">我的</span></div>
+        </nav>
+    </div>
+
+    <!-- 3. COMMUNICATION DETAIL (TRANSCRIPT CARD STYLE) -->
+    <div class="iphone-frame">
+        <header class="px-5 pt-12 pb-6 bg-gradient-to-b from-[#eef4ff] to-white shrink-0">
+            <div class="flex justify-between items-center mb-6">
+                <svg class="w-6 h-6 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                <svg class="w-6 h-6 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            </div>
+            <div class="space-y-2">
+                <h1 class="text-xl font-bold text-slate-900 tracking-tight">云学堂演示平台 - 立项后首访</h1>
+                <p class="text-[12px] text-slate-400 font-medium">云学堂演示平台 | 董陈晨 | 2025-12-12 10:58 | 12分钟45秒</p>
+            </div>
+        </header>
+        <div class="flex px-4 border-b border-slate-100 bg-white">
+            <button class="flex-1 py-4 text-[15px] font-bold text-slate-400">发言人</button>
+            <button class="flex-1 py-4 text-[15px] font-bold text-slate-900 relative">字幕<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-blue-600 rounded-full"></div></button>
+            <button class="flex-1 py-4 text-[15px] font-bold text-slate-400">总结</button>
+            <button class="flex-1 py-4 text-[15px] font-bold text-slate-400">分析</button>
+        </div>
+        <div class="flex-1 bg-[#f8faff] p-4 space-y-4 overflow-y-auto hide-scrollbar">
+            <div class="relative"><input type="text" placeholder="搜索" class="w-full bg-[#f1f4f9] border-none rounded-lg py-2.5 px-10 text-[14px] outline-none text-slate-600"><svg class="absolute left-3.5 top-3 text-slate-400 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+            
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-[#f1f4f9]">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-[14px] font-bold text-slate-800">周</span>
+                    <div class="w-4 h-4 rounded-full border-2 border-rose-500 flex items-center justify-center"><div class="w-1.5 h-1.5 bg-rose-500 rounded-full"></div></div>
+                    <span class="text-[12px] text-slate-300 font-medium ml-auto">10:58:20</span>
+                </div>
+                <div class="h-px bg-[#f1f4f9] w-full mb-4"></div>
+                <p class="text-[15px] text-slate-600 leading-relaxed font-medium">暂未识别到发言人再进来。</p>
+            </div>
+
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-[#f1f4f9]">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-[14px] font-bold text-slate-800">董陈晨</span>
+                    <span class="text-[12px] text-slate-300 font-medium ml-auto">10:58:25</span>
+                </div>
+                <div class="h-px bg-[#f1f4f9] w-full mb-4"></div>
+                <p class="text-[15px] text-slate-600 leading-relaxed font-medium">还是难，难不成你刚进去的时候立马开始说话。</p>
+            </div>
+        </div>
+        <footer class="px-6 py-6 bg-white border-t border-slate-50 space-y-5">
+            <div class="relative h-1 bg-slate-100 rounded-full"><div class="absolute top-0 left-0 h-full bg-blue-600 rounded-full w-[40%]"></div><div class="absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-blue-600 rounded-full border-2 border-white left-[40%]"></div></div>
+            <div class="flex items-center justify-between">
+                <span class="text-[12px] text-slate-400 font-bold font-mono">0:40 / 12:47</span>
+                <div class="w-14 h-14 bg-blue-600 text-white rounded-full flex items-center justify-center"><svg class="w-6 h-6 ml-1 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                <span class="text-[14px] font-bold text-slate-600">1.0 x</span>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>

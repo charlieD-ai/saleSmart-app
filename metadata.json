@@ -1,0 +1,8 @@
+{
+  "name": "国内版",
+  "description": "AI-powered sales conversation intelligence platform designed for mobile performance and insights on the go.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}
