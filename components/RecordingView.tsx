@@ -199,7 +199,7 @@ const RecordingView: React.FC<RecordingViewProps> = ({ status, onStatusChange, o
               <div className="w-1 h-1 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
             </div>
             <span className="text-[10px] font-bold tracking-wide italic">
-              {isAnalyzing ? 'Gemini 正在为您深度解析对话...' : 'AI 正在实时监测关键信号...'}
+              {isAnalyzing ? 'AI 正在为您深度解析对话...' : 'AI 正在实时监测关键信号...'}
             </span>
           </div>
         )}

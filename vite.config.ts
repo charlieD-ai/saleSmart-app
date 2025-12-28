@@ -4,8 +4,11 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
-    // 支持多种环境变量名称（Vercel/Netlify 等平台可能使用不同的名称）
-    const apiKey = env.VITE_GEMINI_API_KEY || env.GEMINI_API_KEY || '';
+    
+    // 内部 LLM 配置（支持环境变量覆盖）
+    const llmApiUrl = env.VITE_LLM_API_URL || env.LLM_API_URL || 'https://ymcas-llm.yxt.com/ymcas-ai/multi-model/v1/chat/completions';
+    const llmAuthToken = env.VITE_LLM_AUTH_TOKEN || env.LLM_AUTH_TOKEN || 'aItutor-47bf6e80-0979-4f13-95b4-d0db46e5f62c';
+    const llmDefaultModel = env.VITE_LLM_DEFAULT_MODEL || env.LLM_DEFAULT_MODEL || 'qwen3-max';
     
     return {
       server: {
@@ -14,12 +17,18 @@ export default defineConfig(({ mode }) => {
       },
       plugins: [react()],
       define: {
+        // 注入 LLM 配置到 import.meta.env（Vite 标准方式）
+        'import.meta.env.VITE_LLM_API_URL': JSON.stringify(llmApiUrl),
+        'import.meta.env.VITE_LLM_AUTH_TOKEN': JSON.stringify(llmAuthToken),
+        'import.meta.env.VITE_LLM_DEFAULT_MODEL': JSON.stringify(llmDefaultModel),
+        // 兼容非 VITE_ 前缀的环境变量
+        'import.meta.env.LLM_API_URL': JSON.stringify(llmApiUrl),
+        'import.meta.env.LLM_AUTH_TOKEN': JSON.stringify(llmAuthToken),
+        'import.meta.env.LLM_DEFAULT_MODEL': JSON.stringify(llmDefaultModel),
         // 注入到 process.env（兼容 Node.js 风格）
-        'process.env.API_KEY': JSON.stringify(apiKey),
-        'process.env.GEMINI_API_KEY': JSON.stringify(apiKey),
-        // 注入到 import.meta.env（Vite 标准方式）
-        'import.meta.env.VITE_GEMINI_API_KEY': JSON.stringify(apiKey),
-        'import.meta.env.GEMINI_API_KEY': JSON.stringify(apiKey),
+        'process.env.LLM_API_URL': JSON.stringify(llmApiUrl),
+        'process.env.LLM_AUTH_TOKEN': JSON.stringify(llmAuthToken),
+        'process.env.LLM_DEFAULT_MODEL': JSON.stringify(llmDefaultModel),
         // 添加调试信息（仅在开发环境）
         'import.meta.env.DEV': JSON.stringify(mode === 'development'),
       },

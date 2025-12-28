@@ -1,6 +1,18 @@
 # 部署指南
 
-本项目是一个 Vite + React 前端应用，可以通过以下免费平台部署：
+本项目是一个 Vite + React 前端应用，使用公司内部 LLM API，可以通过以下免费平台部署：
+
+## 🔧 LLM 配置
+
+项目已配置使用公司内部 LLM API，默认配置如下：
+- **API URL**: `https://ymcas-llm.yxt.com/ymcas-ai/multi-model/v1/chat/completions`
+- **Auth Token**: `aItutor-47bf6e80-0979-4f13-95b4-d0db46e5f62c`
+- **默认模型**: `qwen3-max`
+
+如需覆盖默认配置，可在部署平台的环境变量中设置：
+- `VITE_LLM_API_URL` 或 `LLM_API_URL`
+- `VITE_LLM_AUTH_TOKEN` 或 `LLM_AUTH_TOKEN`
+- `VITE_LLM_DEFAULT_MODEL` 或 `LLM_DEFAULT_MODEL`
 
 ## 🚀 推荐平台（按推荐顺序）
 
@@ -12,13 +24,12 @@
   2. 使用 GitHub/GitLab/Bitbucket 账号登录
   3. 点击 "New Project"
   4. 导入你的 Git 仓库
-  5. 在 "Environment Variables" 中添加：
-     - **变量名**：`VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`（推荐使用 `VITE_GEMINI_API_KEY`）
-     - **变量值**：你的 Gemini API 密钥（从 Google AI Studio 获取）
-     - ⚠️ **重要**：
-       - 必须配置此环境变量，否则应用会报错 "An API Key must be set when running in a browser"
-       - 配置后需要**重新部署**项目才能生效
-       - 可以在项目设置中为所有环境（Production、Preview、Development）都配置
+  5. （可选）在 "Environment Variables" 中配置 LLM API：
+     - 项目已内置默认 LLM 配置，通常无需额外配置
+     - 如需覆盖，可添加：
+       - `VITE_LLM_API_URL`: LLM API 地址
+       - `VITE_LLM_AUTH_TOKEN`: 认证 Token
+       - `VITE_LLM_DEFAULT_MODEL`: 默认模型名称
   6. 点击 "Deploy"
   7. 等待部署完成，会获得一个 `xxx.vercel.app` 的链接
 
@@ -31,9 +42,9 @@
   3. 点击 "Add new site" → "Import an existing project"
   4. 选择你的 Git 仓库
   5. 构建设置会自动检测（已配置 `netlify.toml`）
-  6. 在 "Site settings" → "Environment variables" 中添加：
-     - `VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`: 你的 Gemini API 密钥
-     - ⚠️ **重要**：必须配置此环境变量，否则应用会报错
+  6. （可选）在 "Site settings" → "Environment variables" 中配置 LLM API：
+     - 项目已内置默认 LLM 配置，通常无需额外配置
+     - 如需覆盖，可添加 `VITE_LLM_API_URL`、`VITE_LLM_AUTH_TOKEN`、`VITE_LLM_DEFAULT_MODEL`
   7. 点击 "Deploy site"
   8. 获得 `xxx.netlify.app` 的链接
 
@@ -48,9 +59,9 @@
   5. 构建配置：
      - Build command: `npm run build`
      - Build output directory: `dist`
-  6. 在 "Environment variables" 中添加：
-     - `VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`: 你的 Gemini API 密钥
-     - ⚠️ **重要**：必须配置此环境变量，否则应用会报错
+  6. （可选）在 "Environment variables" 中配置 LLM API：
+     - 项目已内置默认 LLM 配置，通常无需额外配置
+     - 如需覆盖，可添加 `VITE_LLM_API_URL`、`VITE_LLM_AUTH_TOKEN`、`VITE_LLM_DEFAULT_MODEL`
   7. 点击 "Save and Deploy"
   8. 获得 `xxx.pages.dev` 的链接
 
@@ -62,19 +73,19 @@
   2. 推送代码到 GitHub
   3. 在仓库 Settings → Pages 中启用 GitHub Pages
   4. 选择 GitHub Actions 作为源
-  5. 在仓库 Settings → Secrets 中添加：
-     - `VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`: 你的 Gemini API 密钥
-     - ⚠️ **重要**：必须配置此环境变量，否则应用会报错
+  5. （可选）在仓库 Settings → Secrets 中配置 LLM API：
+     - 项目已内置默认 LLM 配置，通常无需额外配置
+     - 如需覆盖，可添加 `VITE_LLM_API_URL`、`VITE_LLM_AUTH_TOKEN`、`VITE_LLM_DEFAULT_MODEL`
 
 ## 📝 注意事项
 
-1. **环境变量**（⚠️ 必须配置）：
-   - **变量名**：`VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`（推荐使用 `VITE_GEMINI_API_KEY`）
-   - **变量值**：你的 Gemini API 密钥（从 [Google AI Studio](https://makersuite.google.com/app/apikey) 获取）
-   - **重要**：
-     - 如果不配置此环境变量，应用会报错："An API Key must be set when running in a browser"
-     - 配置环境变量后，**必须重新部署**项目才能生效
-     - 可以在项目设置中为所有环境（Production、Preview、Development）都配置
+1. **LLM 配置**（可选）：
+   - 项目已内置公司内部 LLM API 的默认配置，**无需额外配置即可使用**
+   - 如需覆盖默认配置，可在环境变量中设置：
+     - `VITE_LLM_API_URL` 或 `LLM_API_URL`: LLM API 地址
+     - `VITE_LLM_AUTH_TOKEN` 或 `LLM_AUTH_TOKEN`: 认证 Token
+     - `VITE_LLM_DEFAULT_MODEL` 或 `LLM_DEFAULT_MODEL`: 默认模型名称
+   - 配置环境变量后，**必须重新部署**项目才能生效
 2. **Git 仓库**：大部分平台需要将代码推送到 Git 仓库（GitHub/GitLab/Bitbucket）
 3. **自定义域名**：所有平台都支持免费添加自定义域名
 4. **环境变量生效**：修改环境变量后，需要重新触发部署才能生效

@@ -18,13 +18,13 @@ const AskView: React.FC<AskViewProps> = ({ initialPrompt, onClearPrompt }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const ai = useRef<SaleSmartAI | null>(null);
 
-  // 初始化 AI 服务，捕获 API Key 错误
+  // 初始化 AI 服务
   useEffect(() => {
     try {
       ai.current = new SaleSmartAI();
       setError(null);
     } catch (err: any) {
-      setError(err.message || 'API Key 未配置，请检查环境变量设置');
+      setError(err.message || 'AI 服务初始化失败，请检查配置');
     }
   }, []);
 
@@ -74,22 +74,21 @@ const AskView: React.FC<AskViewProps> = ({ initialPrompt, onClearPrompt }) => {
     { label: '回访邮件', prompt: '帮我写一封演示后的客户跟进邮件' }
   ];
 
-  // 如果 API Key 未配置，显示错误提示
+  // 如果 AI 服务初始化失败，显示错误提示
   if (error && !ai.current) {
     return (
       <div className="flex flex-col h-full bg-slate-50 items-center justify-center p-6">
         <div className="bg-white rounded-2xl p-6 max-w-md w-full border border-red-200 shadow-lg">
           <div className="text-center">
-            <div className="text-4xl mb-4">🔑</div>
-            <h3 className="text-lg font-semibold text-slate-800 mb-2">API Key 未配置</h3>
+            <div className="text-4xl mb-4">⚠️</div>
+            <h3 className="text-lg font-semibold text-slate-800 mb-2">AI 服务初始化失败</h3>
             <p className="text-sm text-slate-600 mb-4">{error}</p>
             <div className="bg-slate-50 rounded-lg p-4 text-left text-xs text-slate-700">
-              <p className="font-semibold mb-2">解决方案：</p>
+              <p className="font-semibold mb-2">请检查：</p>
               <ol className="list-decimal list-inside space-y-1">
-                <li>在部署平台（Vercel/Netlify等）的环境变量中添加</li>
-                <li>变量名：<code className="bg-white px-1 rounded">VITE_GEMINI_API_KEY</code> 或 <code className="bg-white px-1 rounded">GEMINI_API_KEY</code></li>
-                <li>变量值：你的 Gemini API 密钥</li>
-                <li>重新部署项目</li>
+                <li>网络连接是否正常</li>
+                <li>LLM API 服务是否可访问</li>
+                <li>如需要，可在环境变量中配置 LLM_API_URL 和 LLM_AUTH_TOKEN</li>
               </ol>
             </div>
           </div>

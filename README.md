@@ -12,9 +12,19 @@ View your app in AI Studio: https://ai.studio/apps/drive/1jX8MYesYWPE-vhuNcraNYo
 
 **Prerequisites:**  Node.js
 
-
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+   ```bash
+   npm install
+   ```
+
+2. （可选）配置 LLM API：
+   - 项目已内置公司内部 LLM API 的默认配置，通常无需额外配置
+   - 如需覆盖，可在 `.env.local` 文件中设置：
+     - `VITE_LLM_API_URL`: LLM API 地址
+     - `VITE_LLM_AUTH_TOKEN`: 认证 Token
+     - `VITE_LLM_DEFAULT_MODEL`: 默认模型名称
+
 3. Run the app:
-   `npm run dev`
+   ```bash
+   npm run dev
+   ```
