@@ -13,8 +13,12 @@
   3. 点击 "New Project"
   4. 导入你的 Git 仓库
   5. 在 "Environment Variables" 中添加：
-     - `VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`: 你的 Gemini API 密钥
-     - ⚠️ **重要**：必须配置此环境变量，否则应用会报错
+     - **变量名**：`VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`（推荐使用 `VITE_GEMINI_API_KEY`）
+     - **变量值**：你的 Gemini API 密钥（从 Google AI Studio 获取）
+     - ⚠️ **重要**：
+       - 必须配置此环境变量，否则应用会报错 "An API Key must be set when running in a browser"
+       - 配置后需要**重新部署**项目才能生效
+       - 可以在项目设置中为所有环境（Production、Preview、Development）都配置
   6. 点击 "Deploy"
   7. 等待部署完成，会获得一个 `xxx.vercel.app` 的链接
 
@@ -65,10 +69,12 @@
 ## 📝 注意事项
 
 1. **环境变量**（⚠️ 必须配置）：
-   - 环境变量名称：`VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`（两种都可以）
-   - 值：你的 Gemini API 密钥
-   - **重要**：如果不配置此环境变量，应用会报错 "An API Key must be set when running in a browser"
-   - 配置后需要重新部署才能生效
+   - **变量名**：`VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`（推荐使用 `VITE_GEMINI_API_KEY`）
+   - **变量值**：你的 Gemini API 密钥（从 [Google AI Studio](https://makersuite.google.com/app/apikey) 获取）
+   - **重要**：
+     - 如果不配置此环境变量，应用会报错："An API Key must be set when running in a browser"
+     - 配置环境变量后，**必须重新部署**项目才能生效
+     - 可以在项目设置中为所有环境（Production、Preview、Development）都配置
 2. **Git 仓库**：大部分平台需要将代码推送到 Git 仓库（GitHub/GitLab/Bitbucket）
 3. **自定义域名**：所有平台都支持免费添加自定义域名
 4. **环境变量生效**：修改环境变量后，需要重新触发部署才能生效

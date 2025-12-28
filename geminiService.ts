@@ -6,13 +6,29 @@ export class SaleSmartAI {
 
   constructor() {
     // 支持多种环境变量获取方式（Vite 和 Node.js 兼容）
-    const apiKey = (import.meta.env?.VITE_GEMINI_API_KEY || 
-                    import.meta.env?.GEMINI_API_KEY || 
-                    process.env?.API_KEY || 
-                    process.env?.GEMINI_API_KEY) as string;
+    // 注意：Vite 在构建时会通过 define 注入这些值
+    const apiKey = (
+      import.meta.env?.VITE_GEMINI_API_KEY || 
+      import.meta.env?.GEMINI_API_KEY || 
+      (typeof process !== 'undefined' && process.env?.API_KEY) || 
+      (typeof process !== 'undefined' && process.env?.GEMINI_API_KEY)
+    ) as string | undefined;
     
-    if (!apiKey) {
-      throw new Error('GEMINI_API_KEY 未设置。请在部署平台的环境变量中配置 VITE_GEMINI_API_KEY 或 GEMINI_API_KEY');
+    // 调试信息（仅在开发环境）
+    if (import.meta.env?.DEV) {
+      console.log('API Key 检查:', {
+        hasViteGemini: !!import.meta.env?.VITE_GEMINI_API_KEY,
+        hasGemini: !!import.meta.env?.GEMINI_API_KEY,
+        hasProcessApi: typeof process !== 'undefined' && !!process.env?.API_KEY,
+        hasProcessGemini: typeof process !== 'undefined' && !!process.env?.GEMINI_API_KEY,
+        finalKey: apiKey ? `${apiKey.substring(0, 10)}...` : '未找到'
+      });
+    }
+    
+    if (!apiKey || apiKey === 'null' || apiKey === 'undefined') {
+      const errorMsg = 'GEMINI_API_KEY 未设置。请在部署平台的环境变量中配置 VITE_GEMINI_API_KEY 或 GEMINI_API_KEY，然后重新部署项目。';
+      console.error('API Key 错误:', errorMsg);
+      throw new Error(errorMsg);
     }
     
     this.ai = new GoogleGenAI({ apiKey });
