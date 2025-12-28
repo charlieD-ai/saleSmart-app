@@ -13,7 +13,8 @@
   3. 点击 "New Project"
   4. 导入你的 Git 仓库
   5. 在 "Environment Variables" 中添加：
-     - `GEMINI_API_KEY`: 你的 Gemini API 密钥
+     - `VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`: 你的 Gemini API 密钥
+     - ⚠️ **重要**：必须配置此环境变量，否则应用会报错
   6. 点击 "Deploy"
   7. 等待部署完成，会获得一个 `xxx.vercel.app` 的链接
 
@@ -27,7 +28,8 @@
   4. 选择你的 Git 仓库
   5. 构建设置会自动检测（已配置 `netlify.toml`）
   6. 在 "Site settings" → "Environment variables" 中添加：
-     - `GEMINI_API_KEY`: 你的 Gemini API 密钥
+     - `VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`: 你的 Gemini API 密钥
+     - ⚠️ **重要**：必须配置此环境变量，否则应用会报错
   7. 点击 "Deploy site"
   8. 获得 `xxx.netlify.app` 的链接
 
@@ -43,7 +45,8 @@
      - Build command: `npm run build`
      - Build output directory: `dist`
   6. 在 "Environment variables" 中添加：
-     - `GEMINI_API_KEY`: 你的 Gemini API 密钥
+     - `VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`: 你的 Gemini API 密钥
+     - ⚠️ **重要**：必须配置此环境变量，否则应用会报错
   7. 点击 "Save and Deploy"
   8. 获得 `xxx.pages.dev` 的链接
 
@@ -56,13 +59,19 @@
   3. 在仓库 Settings → Pages 中启用 GitHub Pages
   4. 选择 GitHub Actions 作为源
   5. 在仓库 Settings → Secrets 中添加：
-     - `GEMINI_API_KEY`: 你的 Gemini API 密钥
+     - `VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`: 你的 Gemini API 密钥
+     - ⚠️ **重要**：必须配置此环境变量，否则应用会报错
 
 ## 📝 注意事项
 
-1. **环境变量**：所有平台都需要配置 `GEMINI_API_KEY` 环境变量
+1. **环境变量**（⚠️ 必须配置）：
+   - 环境变量名称：`VITE_GEMINI_API_KEY` 或 `GEMINI_API_KEY`（两种都可以）
+   - 值：你的 Gemini API 密钥
+   - **重要**：如果不配置此环境变量，应用会报错 "An API Key must be set when running in a browser"
+   - 配置后需要重新部署才能生效
 2. **Git 仓库**：大部分平台需要将代码推送到 Git 仓库（GitHub/GitLab/Bitbucket）
 3. **自定义域名**：所有平台都支持免费添加自定义域名
+4. **环境变量生效**：修改环境变量后，需要重新触发部署才能生效
 
 ## 🔧 本地测试构建
 

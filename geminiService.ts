@@ -5,8 +5,17 @@ export class SaleSmartAI {
   private ai: GoogleGenAI;
 
   constructor() {
-    // Initializing with direct reference to process.env.API_KEY as per SDK guidelines
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    // 支持多种环境变量获取方式（Vite 和 Node.js 兼容）
+    const apiKey = (import.meta.env?.VITE_GEMINI_API_KEY || 
+                    import.meta.env?.GEMINI_API_KEY || 
+                    process.env?.API_KEY || 
+                    process.env?.GEMINI_API_KEY) as string;
+    
+    if (!apiKey) {
+      throw new Error('GEMINI_API_KEY 未设置。请在部署平台的环境变量中配置 VITE_GEMINI_API_KEY 或 GEMINI_API_KEY');
+    }
+    
+    this.ai = new GoogleGenAI({ apiKey });
   }
 
   async ask(prompt: string) {

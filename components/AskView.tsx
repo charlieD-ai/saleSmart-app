@@ -14,8 +14,19 @@ const AskView: React.FC<AskViewProps> = ({ initialPrompt, onClearPrompt }) => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const ai = useRef(new SaleSmartAI());
+  const ai = useRef<SaleSmartAI | null>(null);
+
+  // 初始化 AI 服务，捕获 API Key 错误
+  useEffect(() => {
+    try {
+      ai.current = new SaleSmartAI();
+      setError(null);
+    } catch (err: any) {
+      setError(err.message || 'API Key 未配置，请检查环境变量设置');
+    }
+  }, []);
 
   // Handle deep-link initial prompt
   useEffect(() => {
@@ -30,18 +41,30 @@ const AskView: React.FC<AskViewProps> = ({ initialPrompt, onClearPrompt }) => {
   }, [messages]);
 
   const handleSend = async (text: string = input) => {
-    if (!text.trim() || isLoading) return;
+    if (!text.trim() || isLoading || !ai.current) return;
 
     const userMsg: ChatMessage = { id: Date.now().toString(), role: 'user', content: text, timestamp: new Date() };
     setMessages(prev => [...prev, userMsg]);
     setInput('');
     setIsLoading(true);
+    setError(null);
 
-    const responseText = await ai.current.ask(text);
-    
-    const aiMsg: ChatMessage = { id: (Date.now() + 1).toString(), role: 'assistant', content: responseText, timestamp: new Date() };
-    setMessages(prev => [...prev, aiMsg]);
-    setIsLoading(false);
+    try {
+      const responseText = await ai.current.ask(text);
+      const aiMsg: ChatMessage = { id: (Date.now() + 1).toString(), role: 'assistant', content: responseText, timestamp: new Date() };
+      setMessages(prev => [...prev, aiMsg]);
+    } catch (err: any) {
+      const errorMsg: ChatMessage = { 
+        id: (Date.now() + 1).toString(), 
+        role: 'assistant', 
+        content: `❌ 错误：${err.message || '请求失败，请稍后重试'}`, 
+        timestamp: new Date() 
+      };
+      setMessages(prev => [...prev, errorMsg]);
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const quickActions = [
@@ -50,6 +73,30 @@ const AskView: React.FC<AskViewProps> = ({ initialPrompt, onClearPrompt }) => {
     { label: '写周报', prompt: '根据本周沟通记录生成一份销售周报草稿' },
     { label: '回访邮件', prompt: '帮我写一封演示后的客户跟进邮件' }
   ];
+
+  // 如果 API Key 未配置，显示错误提示
+  if (error && !ai.current) {
+    return (
+      <div className="flex flex-col h-full bg-slate-50 items-center justify-center p-6">
+        <div className="bg-white rounded-2xl p-6 max-w-md w-full border border-red-200 shadow-lg">
+          <div className="text-center">
+            <div className="text-4xl mb-4">🔑</div>
+            <h3 className="text-lg font-semibold text-slate-800 mb-2">API Key 未配置</h3>
+            <p className="text-sm text-slate-600 mb-4">{error}</p>
+            <div className="bg-slate-50 rounded-lg p-4 text-left text-xs text-slate-700">
+              <p className="font-semibold mb-2">解决方案：</p>
+              <ol className="list-decimal list-inside space-y-1">
+                <li>在部署平台（Vercel/Netlify等）的环境变量中添加</li>
+                <li>变量名：<code className="bg-white px-1 rounded">VITE_GEMINI_API_KEY</code> 或 <code className="bg-white px-1 rounded">GEMINI_API_KEY</code></li>
+                <li>变量值：你的 Gemini API 密钥</li>
+                <li>重新部署项目</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col h-full bg-slate-50">
